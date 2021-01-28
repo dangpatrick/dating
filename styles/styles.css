@@ -1,0 +1,25 @@
+#innerCon
+{
+    margin: 20px 50px 100px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    padding : 100px;
+    border-radius: 1%;
+}
+
+#firstSect
+{
+    padding-left: 20px;
+    padding-right: 3px;
+}
+
+h1
+{
+    text-align: center;
+}
+
+h3
+{
+    text-align: center;
+}
