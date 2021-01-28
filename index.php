@@ -17,7 +17,6 @@ $f3->set('Debug',3);
 $f3->route('GET /', function(){
     $view = new Template();
     echo $view->render('views/home.html');
-    //include ('views/home.html');
 });
 
 //Run fat free
