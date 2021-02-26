@@ -9,7 +9,7 @@
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="./">My Dating Website</a>
+        <a class="navbar-brand" href="{{ @BASE }}">My Dating Website</a>
     </nav>
 
     <div id="innerCon">
@@ -23,18 +23,35 @@
             </div>
                 <div class="col-md-8 col-lg-8 form-group"><form method="post" action="#">
                     <label><strong>Email</strong></label><br>
-                    <input class="form-control" type="text" id="email" name="email">
+                    <input class="form-control" type="text" id="email" name="email" value="{{@email}}">
+                    <span class="err">
+                        <check if="{{isset(@errors['email']) }}">
+                            {{@errors['email']}}
+                        </check>
+                    </span>
                     <br>
 
                     <label><strong>State</strong></label><br>
-                    <input class="form-control" type="text" id="state" name="state">
+                    <select id="states" name="selectStates">
+                        <repeat group="{{@myStates }}" value="{{ @state }}">
+                            <option value="{{ @state}}"> {{ @state}}</option>
+                        </repeat>
+                    </select>
+                    <span class="err">
+                    <check if="{{isset(@errors['selectStates']) }}">
+                        {{@errors['selectStates']}}
+                    </check>
+                </span>
+                    <br>
                     <br>
 
 
+
                     <label><strong>Seeking</strong></label><br>
-                    <input type="radio" id="male" name="seeking" value="male">
+                    <input type="radio" id="male" name="seeking" value="male"<check if="{{ @seeking == 'male' }}">checked = 'checked' </check>>
                     <label class="pr-2" for="male">Male</label>
-                    <input type="radio" id="female" name="seeking" value="female">
+
+                    <input type="radio" id="female" name="seeking" value="female"<check if="{{ @seeking == 'female' }}">checked = 'checked' </check>>
                     <label for="female">Female</label><br>
 
                     <br>
@@ -43,7 +60,7 @@
             <div class="col-md-4 col-lg-4">
                 <div>
                     <label><strong>Biography</strong></label><br>
-                    <textarea class="form-control" rows="5" id="bio" name="bio"></textarea>
+                    <textarea class="form-control" rows="5" id="bio" name="bio">{{@bio}}</textarea>
                     <br>
                 </div>
 

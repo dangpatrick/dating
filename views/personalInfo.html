@@ -9,7 +9,7 @@
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="328/dating">My Dating Website</a>
+        <a class="navbar-brand" href="{{ @BASE }}">My Dating Website</a>
     </nav>
 
     <div id="innerCon">
@@ -25,15 +25,32 @@
 
                 <div class="col-md-8 col-lg-8 form-group">
                     <label><strong>First Name</strong></label><br>
-                    <input class="form-control" type="text" id="firstName" name="fname">
+                    <input class="form-control" type="text" id="firstName" name="fname" value="{{@fname}}">
+                    <span class="err">
+
+                        <check if="{{isset(@errors['fname']) }}">
+                            {{@errors['fname']}}
+                        </check>
+                    </span>
                     <br>
 
                     <label><strong>Last Name</strong></label><br>
-                    <input class="form-control" type="text" id="lastName" name="lname">
+                    <input class="form-control" type="text" id="lastName" name="lname" value="{{@lname}}">
+                    <span class="err">
+
+                        <check if="{{isset(@errors['lname']) }}">
+                            {{@errors['lname']}}
+                        </check>
+                    </span>
                     <br>
 
                     <label><strong>Age</strong></label><br>
-                    <input class="form-control" type="text" id="age" name="age">
+                    <input class="form-control" type="text" id="age" name="age" value="{{@age}}">
+                    <span class="err">
+                        <check if="{{isset(@errors['age']) }}">
+                            {{@errors['age']}}
+                        </check>
+                    </span>
                     <br>
 
                     <label><strong>Gender</strong></label><br>
@@ -43,7 +60,12 @@
                     <label for="female">Female</label><br>
 
                     <label><strong>Phone Number</strong></label><br>
-                    <input class="form-control" type="text" id="phoneNumber" name="phone">
+                    <input class="form-control" type="text" id="phoneNumber" name="phone" value="{{@phone}}">
+                    <span class="err">
+                    <check if="{{isset(@errors['phone']) }}">
+                        {{@errors['phone']}}
+                    </check>
+                </span>
                     <br>
 
 
