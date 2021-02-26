@@ -117,6 +117,16 @@ $f3->route('GET|POST /profile', function($f3)
             $f3->reroute('interest');
             session_destroy();
         }
+        if (isset($_POST['state'])) {
+
+            $userState = $_POST['state'];
+
+            if (validState($userState)) {
+                $_SESSION['userState'] = $userState;
+            } else {
+                $f3->set('errors["state"]', "Please select a valid state.");
+            }
+        }
     }
     $f3->set('myStates', $state);
     $f3->set('email', $_POST['email']);
