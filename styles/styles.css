@@ -33,3 +33,39 @@ h3
 {
     text-align: center;
 }
+
+#note
+{
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3%;
+    background-color: lightgray;
+
+    padding : 10px;
+}
+
+#mybutton
+{
+    padding-top: 20em;
+}
+
+#mybutton2
+{
+    padding-top: 7em;
+    margin-left: 7em;
+}
+
+fieldset
+{
+    padding-left: 30px;
+}
+
+#checkInputs
+{
+    padding-right: 5px;
+}
+.err
+{
+    color: red;
+}
