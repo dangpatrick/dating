@@ -1,6 +1,6 @@
 <?php
 /*
- * Name Patrick Dang
+ * Name Patrick Dang **
  * Date: 1/28/2021
  * Filename: index.php
  * Description: Controller page for dating project
@@ -58,6 +58,8 @@ $f3->route('GET|POST /personal', function($f3)
         $f3->set('errors["phone"]', "Invalid phone.");
     }
 
+
+
     //valid
     if (empty($f3->get('errors'))) {
         //store the data in the session array
@@ -70,14 +72,21 @@ $f3->route('GET|POST /personal', function($f3)
             $_SESSION['phone'] = $_POST['phone'];
             $_SESSION['gender'] = $_POST['gender'];
             $_SESSION['age'] = $_POST['age'];
-
+        }
 
             $f3->reroute('profile');
             session_destroy();
         }
-    }}
-    $view = new Template();
-    echo $view->render('views/personalInfo.html');
+    }
+        $f3->set('fname', $_POST['fname']);
+        $f3->set('lname', $_POST['lname']);
+        $f3->set('phone', $_POST['phone']);
+        $f3->set('gender', $_POST['gender']);
+        $f3->set('age', $_POST['age']);
+        //var_dump($_POST);
+
+        $view = new Template();
+        echo $view->render('views/personalInfo.html');
 });
 
 //profile
@@ -108,8 +117,6 @@ $f3->route('GET|POST /profile', function($f3)
             $f3->reroute('interest');
             session_destroy();
         }
-
-
     }
 
     $f3->set('myStates', $state);
