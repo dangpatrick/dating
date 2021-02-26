@@ -118,7 +118,6 @@ $f3->route('GET|POST /profile', function($f3)
             session_destroy();
         }
     }
-
     $f3->set('myStates', $state);
     $f3->set('email', $_POST['email']);
     $f3->set('state',  $_POST['selectStates']);
