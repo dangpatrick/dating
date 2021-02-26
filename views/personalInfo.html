@@ -54,9 +54,12 @@
                     <br>
 
                     <label><strong>Gender</strong></label><br>
-                    <input type="radio" id="male" name="gender" value="male">
+                    <input type="radio" id="male" name="gender" value="male"><check
+                            if="{{ @gender == 'male' }}">checked = 'checked' </check>
                     <label class="pr-2" for="male">Male</label>
-                    <input type="radio" id="female" name="gender" value="female">
+
+                    <input type="radio" id="female" name="gender" value="female"><check
+                        if="{{ @gender == 'female' }}">checked = 'checked' </check>
                     <label for="female">Female</label><br>
 
                     <label><strong>Phone Number</strong></label><br>
