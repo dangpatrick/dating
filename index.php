@@ -173,7 +173,7 @@ $f3->route('GET|POST /interest', function($f3)
 //summary
 $f3->route('GET|POST /summary', function()
 {
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
     $view = new Template();
     echo $view->render('views/summary.html');
 });
