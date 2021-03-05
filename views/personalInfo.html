@@ -54,22 +54,24 @@
                     <br>
 
                     <label><strong>Gender</strong></label><br>
-                    <input type="radio" id="male" name="gender" value="male"><check
-                            if="{{ @gender == 'male' }}">checked = 'checked' </check>
+                    <input type="radio" id="male" name="gender" value="male"><check if="{{ @seeking == 'male' }}">checked = 'checked' </check>
                     <label class="pr-2" for="male">Male</label>
 
-                    <input type="radio" id="female" name="gender" value="female"><check
-                        if="{{ @gender == 'female' }}">checked = 'checked' </check>
+                    <input type="radio" id="female" name="gender" value="female"><check if="{{ @seeking == 'female' }}">checked = 'checked' </check>
                     <label for="female">Female</label><br>
 
                     <label><strong>Phone Number</strong></label><br>
-                    <input class="form-control" type="text" id="phoneNumber" name="phone" value="{{@phone}}">
+                    <input class="form-control" type="text" id="phoneNumber" name="phone" value="{{@phone}}" placeholder="###-###-####">
                     <span class="err">
                     <check if="{{isset(@errors['phone']) }}">
                         {{@errors['phone']}}
                     </check>
                 </span>
                     <br>
+
+                    <label ><strong>Premium Membership</strong></label><br>
+                    <input  type="checkbox" id="premium" name="premium"<check if="{{@premium === 'on'}}">checked = 'checked' </check>>
+                    <label for="premium">Sign me up for a Premium Account</label>
 
 
                 </div>
