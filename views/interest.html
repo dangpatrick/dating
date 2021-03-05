@@ -14,7 +14,7 @@
     </nav>
 
     <div id="innerCon">
-        <form method="post" action="summary">
+        <form method="post" action="#">
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <h1 class="float-left"><strong>Interests</strong></h1><br>
@@ -26,9 +26,9 @@
 
                 <div class="col-md-9 col-lg-9 form-check form-check-inline pl-4">
                     <label><strong>In-door Interests</strong></label><br>
-
                     <repeat group="{{@interests }}" value="{{ @interest }}">
-                        <input class="form-check-input" type="checkbox" name="indoor[]" value="{{@interest}}"> {{@interest}}</input>
+                        <input class="form-check-input" type="checkbox" name="indoor[]" value="{{@interest}}"> {{@interest}}
+                        </input>
                     </repeat>
                 </div>
 
@@ -38,7 +38,8 @@
                 <div class="col-md-9 col-lg-9 form-check form-check-inline pl-4">
                     <label><strong>Out-door Interests</strong></label><br>
                     <repeat group="{{@interests2 }}" value="{{ @interest }}">
-                        <input class="form-check-input" type="checkbox" name="outdoor[]" value="{{@interest}}"> {{@interest}}</input>
+                        <input class="form-check-input" type="checkbox" name="outdoor[]" value="{{@interest}}"> {{@interest}}
+                        </input>
                     </repeat>
                 </div>
 
