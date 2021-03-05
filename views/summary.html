@@ -19,32 +19,37 @@
 
                     <tbody>
                     <tr>
-                        <td>Name: {{ @SESSION.fname}} {{ @SESSION.lname}}</td>
+                        <td>Name: {{ @SESSION.myMember->getFname() }} {{ @SESSION.myMember->getLname() }}</td>
                     </tr>
                     <tr>
-                        <td>Gender: {{ @SESSION.gender}}</td>
+                        <td>Gender: {{ @SESSION.myMember->getGender() }}</td>
                     </tr>
                     <tr>
-                        <td>Age: {{ @SESSION.age }}</td>
+                        <td>Age: {{ @SESSION.myMember->getAge() }}</td>
                     </tr>
                     <tr>
-                        <td>Phone: {{ @SESSION.phone }}</td>
+                        <td>Phone: {{ @SESSION.myMember->getPhone() }}</td>
                     </tr>
                     <tr>
-                        <td>Email: {{ @SESSION.email }}</td>
+                        <td>Email: {{ @SESSION.myMember->getEmail() }}</td>
                     </tr>
                     <tr>
-                        <td>State: {{ @SESSION.state }}</td>
+                        <td>State: {{ @SESSION.myMember->getState() }}</td>
                     </tr>
                     <tr>
-                        <td>Seeking: {{ @SESSION.seeking }}</td>
+                        <td>Seeking: {{ @SESSION.myMember->getSeeking() }}</td>
                     </tr>
-                    <tr>
-                        <td>Bio: {{ @SESSION.bio }}</td>
-                    </tr>
-                    <tr>
-                        <td>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</td>
-                    </tr>
+
+                    <check if="{{@SESSION.prem === 'prem'}}">
+
+                        <tr>
+                            <td>Interests: <check if="!empty({{@SESSION.myMember->getInDoorInterests()}})">{{implode(@SESSION.myMember->getInDoorInterests(), ", ")}}, </check>
+                                <check if="!empty({{@SESSION.myMember->getOutDoorInterests()}})">{{implode(@SESSION.myMember->getOutDoorInterests(), ", ")}}, </check></td>
+                        </tr>
+
+                    </check>
+
+
                     </tbody>
                 </table>
             </div>
@@ -55,7 +60,7 @@
                 </div>
 
                 <label>Biography</label><br>
-                <p></p>
+                <p>{{ @SESSION.myMember->getBio()}}</p>
                 <br>
 
             </div>
