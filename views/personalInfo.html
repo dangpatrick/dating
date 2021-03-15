@@ -3,80 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>My dating website</title>
 </head>
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="{{ @BASE }}">My Dating Website</a>
+        <a class="navbar-brand" href="member-summary">ADMIN</a>
     </nav>
 
     <div id="innerCon">
         <form method="post" action="#">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <h1 class="float-left"> <strong>Personal Information</strong></h1><br>
-                </div>
+            <div class="container border">
+                <div class="row"> <!-- start of a row div that contain 2 columns -->
 
-                <div class="col-md-12 col-lg-12">
-                    <hr>
-                </div>
+                    <div class="col justify-content-center m-5"> <!-- column 1-->
+                        <fieldset class="form-group  p-2">
+                            <!--Personal Info -->
+                            <legend>Personal Information</legend>
+                            <hr>
 
-                <div class="col-md-8 col-lg-8 form-group">
-                    <label><strong>First Name</strong></label><br>
-                    <input class="form-control" type="text" id="firstName" name="fname" value="{{@fname}}">
-                    <span class="err">
+                            <!--name -->
 
-                        <check if="{{isset(@errors['fname']) }}">
-                            {{@errors['fname']}}
-                        </check>
-                    </span>
-                    <br>
+                            <div class="form-group">
+                                <label for="fname">First Name
+                                    <input type="text" class="form-control" id="fname" name="fname" value="{{ @userFirstName }}">
+                                    <check if="{{ isset(@errors['fname']) }}">
+                                        {{ @errors['fname'] }}
+                                    </check>
+                                </label>
+                            </div>
 
-                    <label><strong>Last Name</strong></label><br>
-                    <input class="form-control" type="text" id="lastName" name="lname" value="{{@lname}}">
-                    <span class="err">
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" value="{{ @userLastName }}">
+                                <check if=" {{ isset(@errors['lname']) }}">
+                                    {{ @errors['lname'] }}
+                                </check>
+                            </div>
 
-                        <check if="{{isset(@errors['lname']) }}">
-                            {{@errors['lname']}}
-                        </check>
-                    </span>
-                    <br>
-
-                    <label><strong>Age</strong></label><br>
-                    <input class="form-control" type="text" id="age" name="age" value="{{@age}}">
-                    <span class="err">
-                        <check if="{{isset(@errors['age']) }}">
-                            {{@errors['age']}}
-                        </check>
-                    </span>
-                    <br>
-
-                    <label><strong>Gender</strong></label><br>
-                    <input type="radio" id="male" name="gender" value="male"><check if="{{ @seeking == 'male' }}">checked = 'checked' </check>
-                    <label class="pr-2" for="male">Male</label>
-
-                    <input type="radio" id="female" name="gender" value="female"><check if="{{ @seeking == 'female' }}">checked = 'checked' </check>
-                    <label for="female">Female</label><br>
-
-                    <label><strong>Phone Number</strong></label><br>
-                    <input class="form-control" type="text" id="phoneNumber" name="phone" value="{{@phone}}" placeholder="###-###-####">
-                    <span class="err">
-                    <check if="{{isset(@errors['phone']) }}">
-                        {{@errors['phone']}}
-                    </check>
-                </span>
-                    <br>
-
-                    <label ><strong>Premium Membership</strong></label><br>
-                    <input  type="checkbox" id="premium" name="premium"<check if="{{@premium === 'on'}}">checked = 'checked' </check>>
-                    <label for="premium">Sign me up for a Premium Account</label>
+                            <!--age-->
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" value="{{ @userAge }}">
+                                <check if=" {{ isset(@errors['age']) }}">
+                                    {{ @errors['age'] }}
+                                </check>
+                            </div>
 
 
-                </div>
+                            <!--gender-->
+                            <div class="form-group">
+                                <label>Select Your Gender</label>
+                                <div >
+                                    <repeat group="{{ @genders }}" value="{{ @gender }}">
+                                        <label><input type="radio"
+                                                      name="gender"
+                                                      id="{{ @gender }}"
+                                                      value="{{ @gender }}"
+                                            <check if="{{ @gender == @userGender }}">checked</check>>
+                                            {{ ucfirst(@gender) }}
+                                            </input></label> &nbsp; &nbsp; &nbsp;
+                                    </repeat>
+                                </div>
+                                <check if="{{ isset(@errors[ 'gender' ]) }}">
+                                    {{ @errors['gender'] }}
+                                </check>
+                            </div>
 
-                <div class="col-md-4 col-lg-4">
+                            <!--phone number-->
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="number" class="form-control" id="phone" name="phone" value="{{ @userPhone}}" maxlength="10" >
+                                <check if=" {{ isset(@errors['phone']) }}">
+                                    {{ @errors['phone'] }}
+                                </check>
+                            </div>
+                        </fieldset>
+
+                        <!--Premium Member -->
+                        <fieldset>
+                            <legend>Premium Membership</legend>
+                            <label>
+                                <input type="checkbox" id="memberChoice" name="memberChoice" value="{{ @userChoice }}"> Sign me up for a Premium Account!
+                            </label>
+                        </fieldset>
+
+                    </div>
+
+                        <div class="col-md-4 col-lg-4">
                     <div id="note">
                         <p><strong>Note:</strong> All information entered is protected by our privacy policy.
                             Profile information can only be viewed by others with your permission.
@@ -85,8 +101,7 @@
                     </div>
 
                     <div class="col-xs-3" id="mybutton">
-                        <input class="btn btn-primary float-right"
-                               type="submit" value="Next >">
+                        <button type="submit" class="btn btn-info">Next></button>
                     </div>
 
                 </div>

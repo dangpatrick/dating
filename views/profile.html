@@ -10,69 +10,84 @@
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="{{ @BASE }}">My Dating Website</a>
+        <a class="navbar-brand" href="member-summary">ADMIN</a>
     </nav>
+    <form method="post" action="#">
+        <div class="container border">
 
-    <div id="innerCon">
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <h1 class="float-left"><strong>Profile</strong></h1><br>
-            </div>
+            <div class="row"> <!-- start of a row div that contain 2 columns -->
 
-            <div class="col-md-12 col-lg-12">
-                <hr>
-            </div>
-                <div class="col-md-8 col-lg-8 form-group"><form method="post" action="#">
-                    <label><strong>Email</strong></label><br>
-                    <input class="form-control" type="text" id="email" name="email" value="{{@email}}">
-                    <span class="err">
-                        <check if="{{isset(@errors['email']) }}">
-                            {{@errors['email']}}
+                <div class="col justify-content-center m-5"> <!-- column 1-->
+                    <fieldset class="form-group  p-2">
+                        <legend>Profile</legend>
+                        <hr>
+
+                        <!--name -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" value="{{ @userEmail }}">
+                            <check if=" {{ isset(@errors['email']) }}">
+                                {{ @errors['email'] }}
+                            </check>
+                        </div>
+
+                    </fieldset>
+                    <!--State-->
+                    <fieldset class="form-group  p-2">
+                        <label>State(optional)</label>
+
+                        <select class="form-control" id="state" name="state" value=" {{ @userState }}" >
+                            <option value='none'>Select a State</option>
+                            <repeat group="{{ @states }}" value="{{ @state }}">
+                                <option value="{{ @state }}"
+
+                                <check if="{{ @state == @userState }}">
+                                    selected="selected"
+                                </check>
+                                >{{ @state }}
+                                </option>
+                            </repeat>
+                            <!--<option value="washington">Washington</option>-->
+                        </select>
+                    </fieldset>
+                    <!--seeking-->
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Select Seeking Gender (optional)</label>
+                            <div >
+                                <repeat group="{{ @seekings }}" value="{{ @seeking }}">
+                                    <label><input type="radio"
+                                                  name="seeking"
+                                                  id="{{ @seeking }}"
+                                                  value="{{ @seeking }}"
+                                        <check if="{{ @seeking == @userSeeking }}">checked</check>>
+                                        {{ ucfirst(@seeking) }}
+                                        </input></label> &nbsp; &nbsp; &nbsp;
+                                </repeat>
+                            </div>
+                            <check if="{{ isset(@errors[ 'seeking' ]) }}">
+                                {{ @errors['seeking'] }}
+                            </check>
+                        </div>
+
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="bio">Biography(optional)</label>
+                        <input class="form-control" id="bio" name="bio" value="{{ @userBio }}" role="textbox" contenteditable="true">
+                        <check if=" {{ isset( @errors['bio'] ) }}">
+                            {{ @errors['bio'] }}
                         </check>
-                    </span>
-                    <br>
-
-                    <label><strong>State</strong></label><br>
-                    <select id="states" name="selectStates" value=" {{@userState}}">
-                        <repeat group="{{@myStates }}" value="{{ @state }}">
-                            <option value="{{ @state}}"> {{ @state}}</option>
-                        </repeat>
-                    </select>
-                    <span class="err">
-                    <check if="{{isset(@errors['selectStates']) }}">
-                        {{@errors['selectStates']}}
-                    </check>
-                </span>
-                    <br>
-                    <br>
-
-
-
-                    <label><strong>Seeking</strong></label><br>
-                    <input type="radio" id="male" name="seeking" value="male"<check if="{{ @seeking == 'male' }}">checked = 'checked' </check>
-                    <label class="pr-2" for="male">Male</label>
-
-                    <input type="radio" id="female" name="seeking" value="female"<check if="{{ @seeking == 'female' }}">checked = 'checked' </check>
-                    <label for="female">Female</label><br>
-
-                    <br>
-
-
-            <div class="col-md-4 col-lg-4">
-                <div>
-                    <label><strong>Biography</strong></label><br>
-                    <textarea class="form-control" rows="5" id="bio" name="bio">{{@bio}}</textarea>
-                    <br>
-                </div>
-
-                <div class="col-xs-3" id="mybutton">
-                    <input class="btn btn-primary float-right"
-                           type="submit" href="interests" value="Next >">
+                    </div>
                 </div>
             </div>
-                </form>
+            <div class="d-grid d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-info">Next></button>
             </div>
+            <br>
         </div>
-    </div>
+    </form>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

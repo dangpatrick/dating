@@ -10,6 +10,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="{{ @BASE }}">My Dating Website</a>
+        <a class="navbar-brand" href="member-summary">ADMIN</a>
     </nav>
 
     <div id="innerCon">
@@ -19,35 +20,38 @@
 
                     <tbody>
                     <tr>
-                        <td>Name: {{ @SESSION.myMember->getFname() }} {{ @SESSION.myMember->getLname() }}</td>
+                        <td>Name: {{ @SESSION.normalMember->getFname() }} {{ @SESSION.normalMember->getLname() }}</td>
                     </tr>
                     <tr>
-                        <td>Gender: {{ @SESSION.myMember->getGender() }}</td>
+                        <td>Gender: {{ @SESSION.normalMember->getGender() }}</td>
                     </tr>
                     <tr>
-                        <td>Age: {{ @SESSION.myMember->getAge() }}</td>
+                        <td>Age: {{ @SESSION.normalMember->getAge() }}</td>
                     </tr>
                     <tr>
-                        <td>Phone: {{ @SESSION.myMember->getPhone() }}</td>
+                        <td>Phone: {{ @SESSION.normalMember->getPhone() }}</td>
                     </tr>
                     <tr>
-                        <td>Email: {{ @SESSION.myMember->getEmail() }}</td>
+                        <td>Email: {{ @SESSION.normalMember->getEmail() }}</td>
                     </tr>
                     <tr>
-                        <td>State: {{ @SESSION.myMember->getState() }}</td>
+                        <td>State: {{ @SESSION.normalMember->getState() }}</td>
                     </tr>
                     <tr>
-                        <td>Seeking: {{ @SESSION.myMember->getSeeking() }}</td>
+                        <td>Seeking: {{ @SESSION.normalMember->getSeeking() }}</td>
                     </tr>
 
-                    <check if="{{@SESSION.prem === 'prem'}}">
 
                         <tr>
-                            <td>Interests: <check if="!empty({{@SESSION.myMember->getInDoorInterests()}})">{{implode(@SESSION.myMember->getInDoorInterests(), ", ")}}, </check>
-                                <check if="!empty({{@SESSION.myMember->getOutDoorInterests()}})">{{implode(@SESSION.myMember->getOutDoorInterests(), ", ")}}, </check></td>
-                        </tr>
+                            <td>Indoor Interest: {{ @SESSION.premiumMember->getIndoorInterests() }}</td>
 
-                    </check>
+                        </tr>
+                    <tr>
+                        <td>
+                            Outdoor Interest: {{@SESSION.premiumMember->getOutdoorInterests() }}
+                        </td>
+                    </tr>
+
 
 
                     </tbody>
@@ -60,10 +64,12 @@
                 </div>
 
                 <label>Biography</label><br>
-                <p>{{ @SESSION.myMember->getBio()}}</p>
+                <p>{{ @SESSION.normalMember->getBio()}}</p>
                 <br>
 
             </div>
+
+
             <div class="text-center col-md-12 col-lg-12">
                 <a class="btn btn-primary float-right" href="">Contact Me!</a>
             </div>
