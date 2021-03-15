@@ -1,5 +1,7 @@
 <?php
 /**
+ * @author Patrick Dang
+ * @version 1.0
  * Class DataLayer
  */
 
