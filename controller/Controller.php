@@ -303,7 +303,7 @@ class Controller
 //        $dataLayer->insertMember($normalMember);
 
         $dataLayer->insertMember($_SESSION['normalMember']);
-
+//
 
         $view = new Template();
         echo $view->render('views/summary.html');

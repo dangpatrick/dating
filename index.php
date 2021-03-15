@@ -3,7 +3,7 @@
  * Name Patrick Dang **
  * Date: 1/28/2021
  * Filename: index.php
- * Description: Controller page for dating101 project
+ * Description: Controller page for dating project
  */
 
 //This is my CONTROLLER page
@@ -65,12 +65,14 @@ $f3->route('GET|POST /interest', function()
 
 
 //summary
-$f3->route('GET|POST /summary', function()
+$f3->route('GET /summary', function()
 {
     global $controller;
     $controller->summary();
 });
 
+
+//define an member summary route
 $f3->route('GET /member-summary', function (){
     global $controller;
     $controller->memberSummary();

@@ -1,7 +1,5 @@
 <?php
 /**
- * @author Patrick Dang
- * @version 1.0
  * Class DataLayer
  */
 
@@ -57,7 +55,7 @@ class DataLayer
 
         //Execute
         $statement->execute();
-        //$id = $this->_dbh->lastInsertId();
+        $id = $this->_dbh->lastInsertId();
     }
 
 
@@ -79,7 +77,6 @@ class DataLayer
         //var_dump($result);
         return $result;
     }
-
     function getGenders()
     {
         return array('Male', 'Female', "Other");
